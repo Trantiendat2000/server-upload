@@ -30,6 +30,10 @@ var upload = multer({ storage: storage });
  * @method POST
  *
  */
+app.get("upload", (req, res, next) => {
+  console.log("run");
+});
+
 app.post("/upload/media", upload.array("file"), (req, res, next) => {
   console.log("run");
 
