@@ -3,9 +3,12 @@ var bodyParser = require("body-parser");
 var multer = require("multer");
 var app = express();
 var path = require("path");
+var cosr = require("cors");
 
 var host = "localhost";
 var port = 8080;
+
+app.use(cosr());
 
 // Create express app
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,7 +33,7 @@ var upload = multer({ storage: storage });
  * @method POST
  *
  */
-app.get("upload", (req, res, next) => {
+app.get("/upload", (req, res, next) => {
   console.log("run");
 
   res.status(200).send({
@@ -39,7 +42,7 @@ app.get("upload", (req, res, next) => {
 });
 
 app.post("/upload/media", upload.array("file"), (req, res, next) => {
-  console.log("run");
+  console.log("run post");
 
   const files = req.files;
   res.status(200).send({
