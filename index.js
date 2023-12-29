@@ -5,7 +5,7 @@ var app = express();
 var path = require("path");
 var cosr = require("cors");
 
-var host = "localhost";
+var host = "server-upload-qzvt.onrender.com";
 var port = 8080;
 
 app.use(cosr());
@@ -49,9 +49,7 @@ app.post("/upload/media", upload.array("file"), (req, res, next) => {
 
   res.status(200).send({
     data: {
-      urls: files.map(
-        (item) => `http://${host}:${port}/files/${item.filename}`
-      ),
+      urls: files.map((item) => `https://${host}/files/${item.filename}`),
     },
     error: 0,
     message: "Success",
