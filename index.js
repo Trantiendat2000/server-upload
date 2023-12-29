@@ -45,6 +45,8 @@ app.post("/upload/media", upload.array("file"), (req, res, next) => {
   console.log("run post");
 
   const files = req.files;
+  console.log(files);
+
   res.status(200).send({
     data: {
       urls: files.map(
