@@ -65,7 +65,9 @@ app.post("/upload/media", upload.array("file"), (req, res, next) => {
  *
  */
 app.get("/files/:name", (req, res) => {
+  console.log("run Get");
   const fileName = req.params.name;
+  console.log(fileName);
   const directoryPath = path.join(__dirname, "uploads/");
 
   res.sendFile(`${directoryPath}${fileName}`, fileName, (err) => {
