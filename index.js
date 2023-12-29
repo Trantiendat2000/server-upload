@@ -49,7 +49,9 @@ app.post("/upload/media", upload.array("file"), (req, res, next) => {
 
   res.status(200).send({
     data: {
-      urls: files.map((item) => `https://${host}/files/${item.filename}`),
+      urls: files.map(
+        (item) => `https://${host}:${port}/files/${item.filename}`
+      ),
     },
     error: 0,
     message: "Success",
